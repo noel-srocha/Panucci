@@ -25,7 +25,8 @@ import dev.noelsrocha.panucci.ui.theme.PanucciTheme
 @Composable
 fun CheckoutScreen(
     modifier: Modifier = Modifier,
-    products: List<Product> = emptyList()
+    products: List<Product> = emptyList(),
+    onPopbackStack: () -> Unit = {}
 ) {
     Box(
         modifier.fillMaxSize()
@@ -127,7 +128,7 @@ fun CheckoutScreen(
             }
         }
         Button(
-            onClick = { /*TODO*/ },
+            onClick = { onPopbackStack() },
             Modifier
                 .padding(
                     16.dp

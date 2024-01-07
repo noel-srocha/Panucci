@@ -9,11 +9,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import dev.noelsrocha.panucci.sampledata.bottomAppBarItems
+import dev.noelsrocha.panucci.ui.navigation.AppDestination
 import dev.noelsrocha.panucci.ui.theme.PanucciTheme
 
 class BottomAppBarItem(
     val label: String,
-    val icon: ImageVector
+    val icon: ImageVector,
+    val route: AppDestination
 )
 
 @Composable
