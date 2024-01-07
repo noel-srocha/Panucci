@@ -22,7 +22,7 @@ import coil.compose.AsyncImage
 @Composable
 fun MenuProductCard(
     product: Product,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Card(
         modifier
