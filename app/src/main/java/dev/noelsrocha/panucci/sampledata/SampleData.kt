@@ -1,15 +1,7 @@
 package dev.noelsrocha.panucci.sampledata
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AutoAwesome
-import androidx.compose.material.icons.filled.RestaurantMenu
-import androidx.compose.material.icons.outlined.LocalBar
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import dev.noelsrocha.panucci.model.Product
-import dev.noelsrocha.panucci.ui.components.BottomAppBarItem
-import dev.noelsrocha.panucci.ui.navigation.graphs.drinksListRoute
-import dev.noelsrocha.panucci.ui.navigation.graphs.highlightsListRoute
-import dev.noelsrocha.panucci.ui.navigation.graphs.menuListRoute
 import java.math.BigDecimal
 import kotlin.random.Random
 
