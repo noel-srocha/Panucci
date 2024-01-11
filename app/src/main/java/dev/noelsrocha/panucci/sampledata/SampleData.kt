@@ -7,7 +7,9 @@ import androidx.compose.material.icons.outlined.LocalBar
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import dev.noelsrocha.panucci.model.Product
 import dev.noelsrocha.panucci.ui.components.BottomAppBarItem
-import dev.noelsrocha.panucci.ui.navigation.AppDestination
+import dev.noelsrocha.panucci.ui.navigation.graphs.drinksListRoute
+import dev.noelsrocha.panucci.ui.navigation.graphs.highlightsListRoute
+import dev.noelsrocha.panucci.ui.navigation.graphs.menuListRoute
 import java.math.BigDecimal
 import kotlin.random.Random
 
@@ -35,21 +37,3 @@ val sampleProducts = List(10) { index ->
         image = if (index % 2 == 0) "https://picsum.photos/1920/1080" else null
     )
 }
-
-val bottomAppBarItems = listOf(
-    BottomAppBarItem(
-        label = "Destaques",
-        icon = Icons.Filled.AutoAwesome,
-        route = AppDestination.Highlight
-    ),
-    BottomAppBarItem(
-        label = "Menu",
-        icon = Icons.Filled.RestaurantMenu,
-        route = AppDestination.Menu
-    ),
-    BottomAppBarItem(
-        label = "Bebidas",
-        icon = Icons.Outlined.LocalBar,
-        route = AppDestination.Drinks
-    ),
-)
