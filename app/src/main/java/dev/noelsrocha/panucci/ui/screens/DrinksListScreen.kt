@@ -24,7 +24,7 @@ import dev.noelsrocha.panucci.ui.uistate.DrinksListUiState
 @Composable
 fun DrinksListScreen(
     modifier: Modifier = Modifier,
-    title: String = "Bebidas",
+    title: String = "Drinks",
     columns: Int = 2,
     onNavigateToDetails: (Product) -> Unit = {},
     uiState: DrinksListUiState = DrinksListUiState()
@@ -71,7 +71,7 @@ fun DrinksListScreenPreview() {
         Surface {
             DrinksListScreen(
                 uiState = DrinksListUiState(products = sampleProducts),
-                title = "Bebidas"
+                title = "Drinks"
             )
         }
     }

@@ -27,7 +27,7 @@ import dev.noelsrocha.panucci.ui.uistate.HighlightsListUiState
 @Composable
 fun HighlightsListScreen(
     modifier: Modifier = Modifier,
-    title: String = "Destaques do dia",
+    title: String = "Highlights of the Day",
     onNavigateToCheckout: () -> Unit = {},
     onNavigateToDetails: (Product) -> Unit = {},
     uiState: HighlightsListUiState = HighlightsListUiState()
@@ -74,7 +74,7 @@ fun HighlightsListScreenPreview() {
     PanucciTheme {
         Surface {
             HighlightsListScreen(
-                title = "Destaques do dia",
+                title = "Highlights of the Day",
                 uiState = HighlightsListUiState(products = sampleProducts)
             )
         }

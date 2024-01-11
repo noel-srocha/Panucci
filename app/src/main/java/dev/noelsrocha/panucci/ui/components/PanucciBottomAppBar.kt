@@ -12,14 +12,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.NavController
-import androidx.navigation.navOptions
-import dev.noelsrocha.panucci.ui.navigation.graphs.drinksListRoute
-import dev.noelsrocha.panucci.ui.navigation.graphs.highlightsListRoute
-import dev.noelsrocha.panucci.ui.navigation.graphs.menuListRoute
-import dev.noelsrocha.panucci.ui.navigation.graphs.navigateToDrinksList
-import dev.noelsrocha.panucci.ui.navigation.graphs.navigateToHighlightsList
-import dev.noelsrocha.panucci.ui.navigation.graphs.navigateToMenuList
 import dev.noelsrocha.panucci.ui.theme.PanucciTheme
 
 sealed class BottomAppBarItem(
@@ -27,7 +19,7 @@ sealed class BottomAppBarItem(
     val icon: ImageVector,
 ) {
     data object HighlightsList : BottomAppBarItem(
-        label = "Destaques",
+        label = "Highlights",
         icon = Icons.Filled.AutoAwesome
     )
 
@@ -37,7 +29,7 @@ sealed class BottomAppBarItem(
     )
 
     data object DrinksList : BottomAppBarItem(
-        label = "Bebidas",
+        label = "Drinks",
         icon = Icons.Outlined.LocalBar
     )
 }

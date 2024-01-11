@@ -19,7 +19,7 @@ fun NavGraphBuilder.checkoutScreen(navController: NavHostController) {
 
         CheckoutScreen(
             uiState = uiState,
-            onPopbackStack = {
+            onPopBackStack = {
                 navController.navigateUp()
             }
         )

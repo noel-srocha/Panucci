@@ -100,7 +100,7 @@ fun ProductDetailsScreen(
                             .fillMaxWidth(),
                         colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
                     ) {
-                        Text(text = "Pedir")
+                        Text(text = "Order")
                     }
                 }
             }

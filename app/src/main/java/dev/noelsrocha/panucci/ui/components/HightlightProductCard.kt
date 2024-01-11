@@ -77,7 +77,7 @@ fun HighlightProductCard(
                 }
             ) {
                 Text(
-                    text = "Pedir",
+                    text = "Order",
                 )
             }
         }
