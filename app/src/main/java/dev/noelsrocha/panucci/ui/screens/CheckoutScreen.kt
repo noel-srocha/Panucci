@@ -21,13 +21,16 @@ import dev.noelsrocha.panucci.model.Product
 import dev.noelsrocha.panucci.sampledata.sampleProducts
 import dev.noelsrocha.panucci.ui.components.CheckoutItemCard
 import dev.noelsrocha.panucci.ui.theme.PanucciTheme
+import dev.noelsrocha.panucci.ui.uistate.CheckoutUiState
 
 @Composable
 fun CheckoutScreen(
     modifier: Modifier = Modifier,
-    products: List<Product> = emptyList(),
+    uiState: CheckoutUiState = CheckoutUiState(),
     onPopbackStack: () -> Unit = {}
 ) {
+    val products = uiState.products
+
     Box(
         modifier.fillMaxSize()
     ) {
@@ -156,7 +159,7 @@ fun CheckoutScreenPreview() {
     PanucciTheme {
         Surface {
             CheckoutScreen(
-                products = sampleProducts
+                uiState = CheckoutUiState(products = sampleProducts)
             )
         }
     }

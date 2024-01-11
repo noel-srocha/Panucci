@@ -17,14 +17,17 @@ import dev.noelsrocha.panucci.sampledata.sampleProducts
 import dev.noelsrocha.panucci.ui.components.MenuProductCard
 import dev.noelsrocha.panucci.ui.theme.PanucciTheme
 import dev.noelsrocha.panucci.ui.theme.caveatFont
+import dev.noelsrocha.panucci.ui.uistate.MenuListUiState
 
 @Composable
 fun MenuListScreen(
     modifier: Modifier = Modifier,
     title: String = "Menu",
-    products: List<Product> = emptyList(),
+    uiState: MenuListUiState = MenuListUiState(),
     onNavigateToDetails: (Product) -> Unit = {}
 ) {
+    val products = uiState.products
+
     Column(
         modifier.fillMaxSize()
     ) {
@@ -65,7 +68,7 @@ fun MenuListScreenPreview() {
     PanucciTheme {
         Surface {
             MenuListScreen(
-                products = sampleProducts
+                uiState = MenuListUiState(products = sampleProducts)
             )
         }
     }

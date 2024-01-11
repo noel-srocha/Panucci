@@ -1,6 +1,5 @@
 package dev.noelsrocha.panucci.ui.screens
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
@@ -19,16 +18,19 @@ import dev.noelsrocha.panucci.sampledata.sampleProducts
 import dev.noelsrocha.panucci.ui.components.DrinkProductCard
 import dev.noelsrocha.panucci.ui.theme.PanucciTheme
 import dev.noelsrocha.panucci.ui.theme.caveatFont
+import dev.noelsrocha.panucci.ui.uistate.DrinksListUiState
 
-@OptIn(ExperimentalFoundationApi::class)
+
 @Composable
 fun DrinksListScreen(
     modifier: Modifier = Modifier,
     title: String = "Bebidas",
-    products: List<Product> = emptyList(),
     columns: Int = 2,
-    onNavigateToDetails: (Product) -> Unit = {}
+    onNavigateToDetails: (Product) -> Unit = {},
+    uiState: DrinksListUiState = DrinksListUiState()
 ) {
+    val products = uiState.products
+
     Column(
         modifier
             .fillMaxSize()
@@ -68,7 +70,7 @@ fun DrinksListScreenPreview() {
     PanucciTheme {
         Surface {
             DrinksListScreen(
-                products = sampleProducts,
+                uiState = DrinksListUiState(products = sampleProducts),
                 title = "Bebidas"
             )
         }
