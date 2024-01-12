@@ -1,6 +1,5 @@
 package dev.noelsrocha.panucci.ui.navigation.graphs
 
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -10,8 +9,8 @@ import androidx.navigation.compose.composable
 import dev.noelsrocha.panucci.ui.screens.ProductDetailsScreen
 import dev.noelsrocha.panucci.ui.viewmodels.ProductDetailsViewModel
 
-const val productDetailsRoute = "productDetails"
-private const val productIdArgument = "productId"
+internal const val productDetailsRoute = "productDetails"
+internal const val productIdArgument = "productId"
 
 fun NavGraphBuilder.productDetailsScreen(
     onNavigateToCheckout: () -> Unit,
@@ -19,12 +18,8 @@ fun NavGraphBuilder.productDetailsScreen(
 ) {
     composable("$productDetailsRoute/$productIdArgument") { backStackEntry ->
         backStackEntry.arguments?.getString(productIdArgument)?.let { id ->
-            val viewModel = viewModel<ProductDetailsViewModel>()
+            val viewModel = viewModel<ProductDetailsViewModel>(factory = ProductDetailsViewModel.Factory)
             val uiState by viewModel.uiState.collectAsState()
-
-            LaunchedEffect(Unit) {
-                viewModel.findProductById(id)
-            }
 
             ProductDetailsScreen(
                 uiState = uiState,

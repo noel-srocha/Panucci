@@ -11,7 +11,7 @@ import dev.noelsrocha.panucci.model.Product
 import dev.noelsrocha.panucci.ui.screens.HighlightsListScreen
 import dev.noelsrocha.panucci.ui.viewmodels.HighlightsListViewModel
 
-const val highlightsListRoute = "highlights"
+internal const val highlightsListRoute = "highlights"
 
 fun NavGraphBuilder.highlightsListScreen(
     onNavigateToDetails: (Product) -> Unit,

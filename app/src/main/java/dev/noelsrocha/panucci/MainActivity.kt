@@ -14,14 +14,20 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Snackbar
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import dev.noelsrocha.panucci.ui.components.BottomAppBarItem
@@ -34,6 +40,7 @@ import dev.noelsrocha.panucci.ui.navigation.graphs.menuListRoute
 import dev.noelsrocha.panucci.ui.navigation.graphs.navigateSingleTopWithPopUpTo
 import dev.noelsrocha.panucci.ui.navigation.graphs.navigateToCheckout
 import dev.noelsrocha.panucci.ui.theme.PanucciTheme
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
 
@@ -42,6 +49,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             val navController = rememberNavController()
             val backStackEntryState by navController.currentBackStackEntryAsState()
+            val orderDoneMessage = backStackEntryState
+                ?.savedStateHandle
+                ?.getStateFlow<String?>("order_done", null)
+                ?.collectAsState()
             val currentDestination = backStackEntryState?.destination
             val currentRoute = currentDestination?.route
 
@@ -63,6 +74,16 @@ class MainActivity : ComponentActivity() {
                 else -> false
             }
 
+            val snackbarHostState = remember { SnackbarHostState() }
+
+            val rememberCoroutineScope = rememberCoroutineScope()
+
+            orderDoneMessage?.value?.let { message ->
+                rememberCoroutineScope.launch {
+                    snackbarHostState.showSnackbar(message = message)
+                }
+            }
+
             PanucciTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -79,6 +100,7 @@ class MainActivity : ComponentActivity() {
                         mutableStateOf(item)
                     }
                     PanucciApp(
+                        snackbarHostState = snackbarHostState,
                         bottomAppBarItemSelected = selectedItem,
                         onBottomAppBarItemSelectedChange = { item ->
                             navController.navigateSingleTopWithPopUpTo(item)
@@ -107,9 +129,19 @@ fun PanucciApp(
     isShowTopBar: Boolean = false,
     isShowBottomBar: Boolean = false,
     isShowFAB: Boolean = false,
-    content: @Composable () -> Unit
+    snackbarHostState: SnackbarHostState = SnackbarHostState(),
+    content: @Composable () -> Unit,
 ) {
     Scaffold(
+        snackbarHost = {
+            SnackbarHost(hostState = snackbarHostState) { data ->
+                Snackbar(
+                    Modifier.padding(8.dp)
+                ) {
+                    Text(text = data.visuals.message)
+                }
+            }
+        },
         topBar = {
             if (isShowTopBar) {
                 CenterAlignedTopAppBar(
@@ -154,7 +186,7 @@ fun PanucciApp(
 private fun PanucciAppPreview() {
     PanucciTheme {
         Surface {
-            PanucciApp {}
+            PanucciApp(content = {})
         }
     }
 }

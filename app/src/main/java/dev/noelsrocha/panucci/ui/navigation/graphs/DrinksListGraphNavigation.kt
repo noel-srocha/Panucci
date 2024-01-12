@@ -11,7 +11,7 @@ import dev.noelsrocha.panucci.model.Product
 import dev.noelsrocha.panucci.ui.screens.DrinksListScreen
 import dev.noelsrocha.panucci.ui.viewmodels.DrinksListViewModel
 
-const val drinksListRoute = "drinks"
+internal const val drinksListRoute = "drinks"
 
 fun NavGraphBuilder.drinksListScreen(onNavigateToDetails: (Product) -> Unit) {
     composable(drinksListRoute) {
