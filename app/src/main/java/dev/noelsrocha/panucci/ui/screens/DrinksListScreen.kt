@@ -1,7 +1,12 @@
 package dev.noelsrocha.panucci.ui.screens
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.foundation.lazy.staggeredgrid.items
@@ -26,7 +31,7 @@ fun DrinksListScreen(
     modifier: Modifier = Modifier,
     title: String = "Drinks",
     columns: Int = 2,
-    onNavigateToDetails: (Product) -> Unit = {},
+    onProductClick: (Product) -> Unit = {},
     uiState: DrinksListUiState = DrinksListUiState()
 ) {
     val products = uiState.products
@@ -56,7 +61,7 @@ fun DrinksListScreen(
             items(products) { p ->
                 DrinkProductCard(
                     modifier = Modifier
-                        .clickable { onNavigateToDetails(p) },
+                        .clickable { onProductClick(p) },
                     product = p,
                 )
             }
