@@ -6,6 +6,8 @@ import androidx.navigation.compose.NavHost
 import dev.noelsrocha.panucci.ui.navigation.graphs.checkoutScreen
 import dev.noelsrocha.panucci.ui.navigation.graphs.homeGraph
 import dev.noelsrocha.panucci.ui.navigation.graphs.homeGraphRoute
+import dev.noelsrocha.panucci.ui.navigation.graphs.navigateToCheckout
+import dev.noelsrocha.panucci.ui.navigation.graphs.navigateToProductDetails
 import dev.noelsrocha.panucci.ui.navigation.graphs.productDetailsScreen
 
 @Composable
@@ -14,8 +16,16 @@ fun PanucciNavHost(navController: NavHostController) {
         navController = navController,
         startDestination = homeGraphRoute
     ) {
-        homeGraph(navController)
-        productDetailsScreen(navController)
-        checkoutScreen(navController)
+        homeGraph(
+            onNavigateToCheckout = { navController.navigateToCheckout() },
+            onNavigateToProductDetails = { product -> navController.navigateToProductDetails(product.id) }
+        )
+        productDetailsScreen(
+            onBackStack = { navController.navigateUp() },
+            onNavigateToCheckout = { navController.navigateToCheckout() }
+        )
+        checkoutScreen(
+            onPopBackStack = { navController.navigateUp() }
+        )
     }
 }
