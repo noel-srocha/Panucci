@@ -9,7 +9,7 @@ import androidx.navigation.compose.composable
 import dev.noelsrocha.panucci.ui.screens.CheckoutScreen
 import dev.noelsrocha.panucci.ui.viewmodels.CheckoutViewModel
 
-const val checkoutRoute = "checkout"
+internal const val checkoutRoute = "checkout"
 
 fun NavGraphBuilder.checkoutScreen(onPopBackStack: () -> Unit) {
     composable(checkoutRoute) {

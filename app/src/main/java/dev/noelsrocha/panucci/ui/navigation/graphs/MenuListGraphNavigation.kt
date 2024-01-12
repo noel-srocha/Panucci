@@ -11,7 +11,7 @@ import dev.noelsrocha.panucci.model.Product
 import dev.noelsrocha.panucci.ui.screens.MenuListScreen
 import dev.noelsrocha.panucci.ui.viewmodels.MenuListViewModel
 
-const val menuListRoute = "menu"
+internal const val menuListRoute = "menu"
 
 fun NavGraphBuilder.menuListScreen(onNavigateToDetails: (Product) -> Unit) {
     composable(menuListRoute) {
