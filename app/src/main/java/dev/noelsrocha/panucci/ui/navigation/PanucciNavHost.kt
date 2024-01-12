@@ -10,6 +10,8 @@ import dev.noelsrocha.panucci.ui.navigation.graphs.navigateToCheckout
 import dev.noelsrocha.panucci.ui.navigation.graphs.navigateToProductDetails
 import dev.noelsrocha.panucci.ui.navigation.graphs.productDetailsScreen
 
+internal const val baseURI = "panucci://panucci.com.br"
+
 @Composable
 fun PanucciNavHost(navController: NavHostController) {
     NavHost(
