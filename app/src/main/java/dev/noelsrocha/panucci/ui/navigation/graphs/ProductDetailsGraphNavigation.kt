@@ -20,7 +20,7 @@ fun NavGraphBuilder.productDetailsScreen(
     onBackStack: () -> Unit
 ) {
     composable(
-        "$productDetailsRoute/$productIdArgument",
+        "$productDetailsRoute/{$productIdArgument}",
         deepLinks = listOf(
             navDeepLink {
                 uriPattern = "$baseURI/$productDetailsRoute/{$productIdArgument}?$productPromoCodeArgument={$productPromoCodeArgument}"
